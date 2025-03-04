@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url("{{ url_for('static', filename='bg.jpg') }}") no-repeat center center/cover;
+            color: white;
+        }
+        h1 {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        textarea {
+            width: 300px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        button {
+            background-color: #ff4500;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .result {
+            font-size: 20px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 50%;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Social Media Sentiment Analysis</h1>
+    <form method="POST">
+        <textarea name="comment" placeholder="Enter your comment here..."></textarea><br>
+        <button type="submit">Analyze</button>
+    </form>
+    
+    {% if sentiment %}
+    <div class="result">Sentiment: {{ sentiment }}</div>
+    {% endif %}
+</body>
+</html>
